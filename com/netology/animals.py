@@ -19,7 +19,7 @@ class Animal:
 
     def move(self, position):
         self.position = position
-        print('Moving to position {}'.format(position))
+        print('{} is moving to position {}'.format(type(self).__name__, position))
 
     def eat(self, amount_of_food):
         self.weight += amount_of_food / 2  # let's imagine that 50% of food is absorbed
@@ -81,7 +81,8 @@ class Duck(Bird):
     def talk(self, sound='Quack-quack!'):
         super(Duck, self).talk(sound)
 
-    def swim(self):
+    @staticmethod
+    def swim():
         print('The duck is swimming...')
 
 
@@ -95,3 +96,22 @@ class Goose(Bird):
 
     def talk(self, sound='Ga-ga-ga'):
         super(Goose, self).talk(sound)
+
+
+def main():
+    duck = Duck()
+    duck.talk()
+    duck.swim()
+
+    cow = Cow()
+    cow.talk()
+    cow.move(10)
+
+    goat = Goat()
+    goat.talk()
+    goat.move(2)
+    goat.move(3)
+    print('Goat is at position {}'.format(goat.position))
+
+
+main()
